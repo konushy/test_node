@@ -1,0 +1,12 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - npm install
+      - zip -r TEST_NODE.zip *
+  post_build:
+    commands:
+      - aws s3 cp TEST_NODE.zip s3://lambda-codebuild-sources/
