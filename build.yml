@@ -10,4 +10,3 @@ phases:
   post_build:
     commands:
       - aws s3 cp TEST_NODE.zip s3://lambda-codebuild-sources/
-      - aws lambda update-function-code --function-name TEST_NODE --s3-bucket lambda-codebuild-sources --s3-key TEST_NODE.zip
