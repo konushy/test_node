@@ -1,0 +1,17 @@
+{
+  "name": "your-project-name",
+  "version": "1.0.0",
+  "description": "Your project description",
+  "scripts": {
+    "ai": "node scripts/ai.js",
+    "download-files-script": "node scripts/download-files-script.js",
+    "meruscase-attach-files-script": "node scripts/meruscase-attach-files-script.js",
+    "meruscase-parsing-script": "node scripts/meruscase-parsing-script.js",
+    "qme": "node scripts/qme.js",
+    "qme-test-data": "node scripts/qme-test-data.js",
+    "qme-without-submit": "node scripts/qme-without-submit.js"
+  },
+  "dependencies": {
+    
+  }
+}
