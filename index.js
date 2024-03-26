@@ -1,16 +1,72 @@
 // index.js
-const ai = require('./scripts/ai');
 
-ai(); // Вызываем функцию из ai.js
+const { exec } = require('child_process');
 
-exports.handler = async (event) => {
-  const scriptName = event.scriptName;
-  const scriptFunction = scripts[scriptName];
-  
-  if (scriptFunction) {
-    scriptFunction();
-    return { statusCode: 200, body: `Скрипт "${scriptName}" успешно выполнен.` };
-  } else {
-    return { statusCode: 404, body: `Скрипт с именем "${scriptName}" не найден.` };
-  }
+exports.handler = async (event, context) => {
+    // Проверка наличия тела запроса
+    if (!event.body) {
+        return {
+            statusCode: 400,
+            body: JSON.stringify({ message: 'Request body is missing' })
+        };
+    }
+    
+    // Парсинг JSON из тела запроса
+    const requestBody = JSON.parse(event.body);
+    
+    // Проверка наличия параметра "scriptType" в теле запроса
+    if (!requestBody.scriptType) {
+        return {
+            statusCode: 400,
+            body: JSON.stringify({ message: 'Script type is missing' })
+        };
+    }
+
+    // Выбор скрипта для выполнения
+    let script;
+    switch (requestBody.scriptType) {
+        case 'ai':
+            script = 'npm run ai';
+            break;
+        case 'download-files-script':
+            script = 'npm run download-files-script';
+            break;
+        case 'meruscase-attach-files-script':
+            script = 'npm run meruscase-attach-files-script';
+            break;
+        case 'meruscase-parsing-script':
+            script = 'npm run meruscase-parsing-script';
+            break;
+        case 'qme':
+            script = 'npm run qme';
+            break;
+        case 'qme-test-data':
+            script = 'npm run qme-test-data';
+            break;
+        case 'qme-without-submit':
+            script = 'npm run qme-without-submit';
+            break;
+        default:
+            return {
+                statusCode: 400,
+                body: JSON.stringify({ message: 'Invalid script type' })
+            };
+    }
+
+    // Выполнение выбранного скрипта
+    exec(script, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`exec error: ${error}`);
+            return {
+                statusCode: 500,
+                body: JSON.stringify({ message: 'Error executing script' })
+            };
+        }
+        console.log(`stdout: ${stdout}`);
+        console.error(`stderr: ${stderr}`);
+        return {
+            statusCode: 200,
+            body: JSON.stringify({ message: 'Script executed successfully' })
+        };
+    });
 };
