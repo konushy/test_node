@@ -1,3 +1,5 @@
+// index.js
+
 const { exec } = require('child_process');
 
 exports.handler = async (event, context) => {
@@ -51,24 +53,24 @@ exports.handler = async (event, context) => {
             };
     }
 
-    // Return a promise to handle async execution
-    return new Promise((resolve, reject) => {
-        // Execute the selected script
-        exec(script, (error, stdout, stderr) => {
-            if (error) {
-                console.error(`exec error: ${error}`);
-                reject({
-                    statusCode: 500,
-                    body: JSON.stringify({ message: 'Error executing script' })
-                });
-            } else {
-                console.log(`stdout: ${stdout}`);
-                console.error(`stderr: ${stderr}`);
-                resolve({
-                    statusCode: 200,
-                    body: JSON.stringify({ message: 'Script executed successfully' })
-                });
-            }
-        });
+    // Execute the selected script
+    exec(script, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`exec error: ${error}`);
+            return {
+                statusCode: 500,
+                body: JSON.stringify({ message: 'Error executing script' })
+            };
+        }
+        console.log(`stdout: ${stdout}`);
+        console.error(`stderr: ${stderr}`);
+        return {
+            statusCode: 200,
+            body: JSON.stringify({ message: 'Script executed successfully' })
+        };
     });
+    return {
+        statusCode: 200,
+        body: JSON.stringify({ message: 'Script executed successfully' })
+    };
 };
