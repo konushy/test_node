@@ -3,7 +3,7 @@
 const { exec } = require('child_process');
 
 exports.handler = async (event, context) => {
-    // Проверка наличия тела запроса
+    // Check if request body exists
     if (!event.body) {
         return {
             statusCode: 400,
@@ -11,10 +11,10 @@ exports.handler = async (event, context) => {
         };
     }
     
-    // Парсинг JSON из тела запроса
+    // Parse JSON from request body
     const requestBody = JSON.parse(event.body);
     
-    // Проверка наличия параметра "scriptType" в теле запроса
+    // Check if "scriptType" parameter exists in request body
     if (!requestBody.scriptType) {
         return {
             statusCode: 400,
@@ -22,7 +22,7 @@ exports.handler = async (event, context) => {
         };
     }
 
-    // Выбор скрипта для выполнения
+    // Select script to execute
     let script;
     switch (requestBody.scriptType) {
         case 'ai':
@@ -53,7 +53,7 @@ exports.handler = async (event, context) => {
             };
     }
 
-    // Выполнение выбранного скрипта
+    // Execute the selected script
     exec(script, (error, stdout, stderr) => {
         if (error) {
             console.error(`exec error: ${error}`);
