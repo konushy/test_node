@@ -1,2 +1,5 @@
+import random
+
 console.log('RUNNING SCRIPT: ai');
-undefined_function()
+if random.random() < 0.5:
+        undefined_function()
