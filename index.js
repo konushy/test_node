@@ -1,4 +1,4 @@
-// index.js
+import random
 
 const { exec } = require('child_process');
 
