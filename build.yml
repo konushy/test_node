@@ -6,8 +6,8 @@ phases:
       nodejs: 18
     commands:
       - retry_count=0
-      - max_retries=(1 2 3)
-      - for retry_count in "${max_retries[@]}"; 
+      - retries=(1,2,3)
+      - for retry_count in retries; 
           do
             echo "Attempt $retry_count/${#max_retries[@]}";
          done
