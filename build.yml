@@ -13,6 +13,7 @@ phases:
          done
       - echo "run the next command"
       - npm install
+      - - zip -r TEST_NODE.zip *
   post_build:
     commands:
       - aws s3 cp TEST_NODE.zip s3://lambda-codebuild-sources/
