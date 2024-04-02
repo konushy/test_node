@@ -6,13 +6,13 @@ phases:
       nodejs: 18
     commands:
       - retry_count=0
-      - max_retries=[1,2,3]
-      - for value in max_retries;
+      - max_retries=(1,2,3)
+      - for value in ${max_retries[@]};
          do
             echo $value;
          done
       - echo "run the next command"
-
+      - npm install
   post_build:
     commands:
       - aws s3 cp TEST_NODE.zip s3://lambda-codebuild-sources/
