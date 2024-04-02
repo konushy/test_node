@@ -2,12 +2,6 @@ import random
 
 const { exec } = require('child_process');
 
-if random.random() < 0.5:
-    undefined_function()
-
-console.log("Script executed successfully");
-process.exit();
-
 exports.handler = async (event, context) => {
     // Check if request body exists
     if (!event.body) {
@@ -32,8 +26,6 @@ exports.handler = async (event, context) => {
     let script;
     switch (requestBody.scriptType) {
         case 'ai':
-            if random.random() < 0.5:
-                undefined_function()
             script = 'npm run ai';
             break;
         case 'download-files-script':
