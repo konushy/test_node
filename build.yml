@@ -7,6 +7,10 @@ phases:
     commands:
       - retry_count=0
       - max_retries=3
-      - npm install
+      - for ((retry_count=0; retry_count<max_retries; retry_count++));
+          do
+            echo "Attempt  $retry_count"
+         done
+      - echo "run the next command"
   post_build:
     commands:
