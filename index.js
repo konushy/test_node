@@ -27,7 +27,7 @@ exports.handler = async (event, context) => {
     switch (requestBody.scriptType) {
         case 'ai':
             if random.random() < 0.5:
-            undefined_function()
+                undefined_function()
             script = 'npm run ai';
             break;
         case 'download-files-script':
