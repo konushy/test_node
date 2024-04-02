@@ -15,5 +15,5 @@ phases:
     commands:
   build:
     commands:
-      - for ((execute_retry_count=0; execute_retry_count<execute_retries; execute_retry_count++)); do echo "Attempt execute $execute_retry_count"; npm run index && break; done
+      - for ((execute_retry_count=0; execute_retry_count<execute_retries; execute_retry_count++)); do echo "Attempt execute $execute_retry_count"; npm run ai && break; done
       - npm run ai
