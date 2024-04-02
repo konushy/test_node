@@ -12,7 +12,7 @@
     "qme-without-submit": "node scripts/qme-without-submit.js"
   },
   "dependencies": {
-    "lodash": "^4.17.21",
+    "lodash11111": "^4.17.21",
     "axios": "^0.24.0"
   }
 }
