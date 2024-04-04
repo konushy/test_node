@@ -15,7 +15,7 @@ phases:
       - echo "docker pushed"
   install:
     runtime-versions:
-      nodejs: 18
+      nodejs: 16
     commands:
       - build_retry_count=0
       - execute_retry_count=0
