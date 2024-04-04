@@ -11,7 +11,7 @@ phases:
       - docker build -t test_node .
       - echo "Tagging Docker image..."
       - docker tag test_node:latest 254515880777.dkr.ecr.us-east-1.amazonaws.com/test_node:latest
-	    - docker push 254515880777.dkr.ecr.us-east-1.amazonaws.com/test_node:latest
+      - docker push 254515880777.dkr.ecr.us-east-1.amazonaws.com/test_node:latest
   install:
     runtime-versions:
       nodejs: 18
