@@ -10,8 +10,9 @@ phases:
       - echo "Building Docker image..."
       - docker build -t test_node .
       - echo "Tagging Docker image..."
-      - docker tag test_node:latest 254515880777.dkr.ecr.us-east-1.amazonaws.com/test_node:latest
-      - docker push 254515880777.dkr.ecr.us-east-1.amazonaws.com/test_node:latest
+      - docker tag test_node:latest 254515880777.dkr.ecr.us-east-1.amazonaws.com/test_node:new
+      - docker push 254515880777.dkr.ecr.us-east-1.amazonaws.com/test_node:new
+      - echo "docker pushed"
   install:
     runtime-versions:
       nodejs: 16
