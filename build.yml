@@ -24,5 +24,3 @@ phases:
       - echo "run the next command"
   post_build:
     commands:
-  build:
-    commands:
