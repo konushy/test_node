@@ -13,8 +13,8 @@ async function getWebsiteContent() {
 
 async function main() {
     //const websiteContent = await getWebsiteContent();
-    job_id = QME_JOB_ID;
-    console.log('External VAR:' + job_id);
+    //job_id = QME_JOB_ID;
+    console.log('External VAR:' + process.env.QME_JOB_ID);
     console.log('RUNNING SCRIPT: ai');
     /*
     if (websiteContent) {
