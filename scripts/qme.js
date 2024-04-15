@@ -25,8 +25,8 @@ async function main() {
   const secret = response.SecretString;
 
   console.log(secret);
-  some_var = process.env.SOME_VAR;
-  console.log('External VAR:' + some_var);
+  job_id = process.env.QME_JOB_ID;
+  console.log('External VAR:' + job_id);
   console.log('RUNNING SCRIPT: qme');
 }
 
