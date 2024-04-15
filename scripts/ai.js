@@ -22,5 +22,6 @@ async function main() {
 main().catch(error => {
     console.error('ERR:', error);
 });
-console.log('External VAR:' + QME_JOB_ID);
+job_id = process.env.QME_JOB_ID;
+console.log('External VAR:' + job_id);
 console.log('RUNNING SCRIPT: ai');
