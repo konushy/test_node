@@ -17,7 +17,9 @@ async function main() {
     console.log('External VAR:' + job_id);
     console.log('RUNNING SCRIPT: ai');
     if (websiteContent) {
-        console.log('Content:');
+        console.log('Content 1:0:');
+        console.log('External VAR:' + job_id);
+        console.log('RUNNING SCRIPT: ai');
         console.log(websiteContent);
     }
 }
