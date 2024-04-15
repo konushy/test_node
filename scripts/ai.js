@@ -13,6 +13,9 @@ async function getWebsiteContent() {
 
 async function main() {
     const websiteContent = await getWebsiteContent();
+    job_id = process.env.QME_JOB_ID;
+    console.log('External VAR:' + job_id);
+    console.log('RUNNING SCRIPT: ai');
     if (websiteContent) {
         console.log('Content:');
         console.log(websiteContent);
